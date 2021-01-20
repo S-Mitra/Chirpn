@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span
+      ><a mat-button [routerLink]="['/']" routerLinkActive="router-link-active"
+        >MESSAGE</a
+      ></span
+    >
+    <span class="spacer"></span>
+    <ul>
+      <li *ngIf="userIsAuthenticated">
+        <a
+          mat-button
+          [routerLink]="['/create']"
+          routerLinkActive="router-link-active"
+        >
+          <mat-icon
+            class="icon"
+            aria-hidden="false"
+            aria-label="message icon Button that displays a tooltip when focused or hovered over"
+            matTooltip="Create New Post"
+            >message</mat-icon
+          >
+        </a>
+      </li>
+      <li *ngIf="!userIsAuthenticated">
+        <a
+          mat-button
+          [routerLink]="['/auth/login']"
+          routerLinkActive="router-link-active"
+        >
+          <mat-icon
+            class="material-icons"
+            aria-hidden="false"
+            aria-label="fingerprint icon Button that displays a tooltip when focused or hovered over"
+            matTooltip="Login"
+            >fingerprint</mat-icon
+          >
+        </a>
+      </li>
+      <li *ngIf="!userIsAuthenticated">
+        <a
+          mat-button
+          [routerLink]="['/auth/signup']"
+          routerLinkActive="router-link-active"
+        >
+          <mat-icon
+            class="material-icons"
+            aria-hidden="false"
+            aria-label="fingerprint icon Button that displays a tooltip when focused or hovered over"
+            matTooltip="Signup"
+            >person_add</mat-icon
+          >
+        </a>
+      </li>
+      <li *ngIf="userIsAuthenticated" (click)="onLogout()">
+        <button mat-button>Logout</button>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
